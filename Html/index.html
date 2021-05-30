@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #input_container {
+                position:relative;
+                direction: rtl;
+                width: 100px;
+            }
+            #input {
+                height:27px;
+                margin:0;
+                padding-right: 30px;
+                width: 100%;
+            }
+            #input_img {
+                position:absolute;
+                bottom:5px;
+                right:5px;
+                width:18px;
+                height:18px;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="header-text">Employee</h1>
+        </header>
+        <div class="title">
+            <h2 class="title-text">Represents employees</h2>
+        </div>
+        <div class="ajax-checker">
+            <input class="ajax-checker-checkbox" type="checkbox">Load by inserted data Load by AJAX</input>
+        </div>
+        <div class="form-container">
+            <p class="form-description">Please, insert data in the fiekd then press button.* The data must be in the JSON format.</p>
+            <form class="employee-ajax-form">
+                <textarea class="employee-ajax-form-textbox" placeholder="JSON data"></textarea>
+                <div id="input_container">
+                    <input id="input" type="submit" value="Load data"></input>
+                    <img src="C:\Users\yulii\Downloads\ajax-loader.gif" id="input_img">
+                </div>
+            </form>
+        </div>
+        <div class="table-container">
+            <table class="table-employee">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Average  monthly salary</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Anna</td>
+                    <td>1664</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bob</td>
+                    <td>1331</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Dany</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Clara</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Egor</td>
+                    <td>1000</td>
+                </tr>
+            </table>
+            <div class="action-container">
+                <a class="action-sort">Sort data</a>
+                <a class="action-get-first">Get first 'n' names</a>
+                <a class="action-get-last">Get last 'n' ids</a>
+                <input class="action-input" type="number"/>
+            </div>
+        </div>
+        <footer class="footer">* Please, enter quantity ("n" &#8593;) for data you want get.</footer>
+    </body>
+</html>
