@@ -2,10 +2,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="../Css/index.css">
-        <script src="../JS/Employee.js"></script>
-        <script src="../JS/FixedEmployee.js"></script>
-        <script src="../JS/PerHourEmployee.js"></script>
-        <script src="../JS/EmployeeCollection.js"></script>
     <body>
         <div class="box">
             <header class="header">
@@ -18,54 +14,37 @@
             </div>
             <div>
                 <form class="switch-form">
-                    <input type="checkbox" id="switch" name="switch"/>
+                    <input type="checkbox" id="switch" name="switch" onclick="showMe('form-block')"/>
                     <label for="switch"><i></i></label>
                     <span class="on">Load by inserted data</span>
                     <span class="off">Load by AJAX</span>
                 </form>
             </div>
-            <div class="form-container">
+            <div id="form-block" class="form-container">
+                <div class="error-box">
+                    <p>Invalid input. Please, insert valid data in the field.</p>
+                    <span class="btn-close"><i class="fa fa-times"></i></span>
+                </div>
                 <p>Please, insert data in the field then press button.<span class="annotate"><sup>*</sup> The data must be in the JSON format.</span></p>
                 <form class="form">
                     <textarea placeholder="JSON data" id="json-input" rows="12"></textarea>
                 </form>
-                <div id="input_container">
-                    <span id="ajax-btn" class="btn btn-load">Load data <i class="fa fa-spinner"></i></span>
-                </div>
+            </div>
+            <div id="input_container">
+                <span id="ajax-btn" class="btn btn-load">Load data <i class="fa fa-spinner"></i></span>
             </div>
             <div id="table-holder">
                 <div class="table-box">
-                    <table class="table">
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Average  monthly salary</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Anna</td>
-                            <td>1664</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Bob</td>
-                            <td>1331</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Dany</td>
-                            <td>8000</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Clara</td>
-                            <td>8000</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Egor</td>
-                            <td>1000</td>
-                        </tr>
+                    <table class="table" id="employee-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Average  monthly salary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -76,39 +55,20 @@
             
                 <form class="form-controll">
                     <span class="btn btn-up">+</span>
-                    <input id="count-input" type="text" value="0"></input>
+                    <input id="count-input" type="number" value="0"></input>
                     <span class="btn btn-down">-</span>
                 </form>
             </div>
             <span class="annotate rt">* Please, enter quantity ("n" &#8593;) for data you want get.</span>
             <div class="list-holder">
                 <ul class="list">
-                <li><span>1.</span> Mcfarland</li>
-                <li><span>2.</span> Jeannette</li>
-                <li><span>3.</span> Jeanine</li>
-                <li><span>4.</span> Daniel</li>
-                <li><span>5.</span> Suarez</li>
                 </ul>
-            </div>
-            <div class="error-box">
-                <p>Invalid input. Please, insert valid data in the field.</p>
-                <span class="btn-close"><i class="fa fa-times"></i></span>
             </div>
         </div>
     </body>
-    <script>
-        let coll = new EmployeeCollection();
-        let test = new FixedEmployee("test", 100, "Jhon");
-        let test2 = new PerHourEmployee("test2", 100, "Carmen");
-        let test3 = new PerHourEmployee("test3", 100, "Ahmed");
-        let test4 = new PerHourEmployee("test4", 100, "Albedo");
-        let test5 = new PerHourEmployee("test5", 100, "Sona");
-        coll.addRange([test, test2, test3, test4, test5])
-        let test6 = new FixedEmployee("test6", 102, "Alice");
-        coll.add(test6);
-        console.log("sorted collection:");
-        console.log(coll.sort());
-        console.log("top five names:" + coll.getTopFiveNames());
-        console.log("last three ids:" + coll.getLastThreeIds());
-    </script>
+    <script src="../JS/Employee.js"></script>
+    <script src="../JS/index.js"></script>
+    <script src="../JS/FixedEmployee.js"></script>
+    <script src="../JS/PerHourEmployee.js"></script>
+    <script src="../JS/EmployeeCollection.js"></script>
 </html>
