@@ -8,18 +8,35 @@ document.getElementsByClassName("btn-down")[0].addEventListener("click", countDo
 
 var employeeCollection;
 
-function getDefaultData(){
+function setAjaxData(){
     let coll = new EmployeeCollection();
-    let test = new FixedEmployee("test", 100, "Jhon");
-    let test2 = new PerHourEmployee("test2", 100, "Carmen");
-    let test3 = new PerHourEmployee("test3", 100, "Ahmed");
-    let test4 = new PerHourEmployee("test4", 100, "Albedo");
-    let test5 = new PerHourEmployee("test5", 100, "Sona");
-    let test6 = new FixedEmployee("test6", 102, "Alice");
-    coll.addRange([test, test2, test3, test4, test5, test6]);
 
-    return coll;
+    let callback = function(err, data) {
+        if (err !== null) {
+          alert('Something went wrong: ' + err);
+        } else {
+            coll.addRange(buildEmployees(data));
+            renderEmployeeCollection(coll.collection);
+            employeeCollection = coll;
+        }
+    };
+    getJSON('https://raw.githubusercontent.com/Guilegaton/EHtmlCss/Js-Task2/Resources/loadData.json',callback);
 }
+
+function getJSON(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
 
 var loaderFlag = true;
 
@@ -40,9 +57,7 @@ function submit(event) {
         }
     }
     else{
-        let coll = getDefaultData();
-        renderEmployeeCollection(coll.collection);
-        employeeCollection = coll;
+        setAjaxData();
     }
 }
 
@@ -65,8 +80,13 @@ function renderEmployeeCollection(arr){
 }
 
 function deserializeJson(json){
-    let arr = [];
     let employees = JSON.parse(json);
+    let arr = buildEmployees(employees);
+    return arr;
+}
+
+function buildEmployees(employees){
+    let arr = [];
     for(let i = 0; i < employees.length; i++){
         let element = employees[i];
         let result;
@@ -80,6 +100,7 @@ function deserializeJson(json){
             throw "Invalid json";
         }
     }
+
     return arr;
 }
 
