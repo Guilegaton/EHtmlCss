@@ -1,87 +1,96 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            #input_container {
-                position:relative;
-                direction: rtl;
-                width: 100px;
-            }
-            #input {
-                height:27px;
-                margin:0;
-                padding-right: 30px;
-                width: 100%;
-            }
-            #input_img {
-                position:absolute;
-                bottom:5px;
-                right:5px;
-                width:18px;
-                height:18px;
-            }
-        </style>
+        <link rel="stylesheet" href="../Css/index.css">
     </head>
     <body>
-        <header class="header">
-            <h1 class="header-text">Employee</h1>
-        </header>
-        <div class="title">
-            <h2 class="title-text">Represents employees</h2>
+        <div class="box">
+            <header class="header">
+                <h1 class="header-text">Employee</h1>
+            </header>
         </div>
-        <div class="ajax-checker">
-            <input class="ajax-checker-checkbox" type="checkbox">Load by inserted data Load by AJAX</input>
-        </div>
-        <div class="form-container">
-            <p class="form-description">Please, insert data in the fiekd then press button.* The data must be in the JSON format.</p>
-            <form class="employee-ajax-form">
-                <textarea class="employee-ajax-form-textbox" placeholder="JSON data"></textarea>
+        <div class="box">
+            <div class="title-text">
+                <h2 >Represents employees</h2>
+            </div>
+            <div>
+                <form class="switch-form">
+                    <input type="checkbox" id="switch" name="switch"/>
+                    <label for="switch"><i></i></label>
+                    <span class="on">Load by inserted data</span>
+                    <span class="off">Load by AJAX</span>
+                </form>
+            </div>
+            <div class="form-container">
+                <p>Please, insert data in the field then press button.<span class="annotate"><sup>*</sup> The data must be in the JSON format.</span></p>
+                <form class="form">
+                    <textarea placeholder="JSON data" id="json-input" rows="12"></textarea>
+                </form>
                 <div id="input_container">
-                    <input id="input" type="submit" value="Load data"></input>
-                    <img src="../Resources/ajax-loader.gif" id="input_img">
+                    <span id="ajax-btn" class="btn btn-load">Load data <i class="fa fa-spinner"></i></span>
                 </div>
-            </form>
-        </div>
-        <div class="table-container">
-            <table class="table-employee">
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Average  monthly salary</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Anna</td>
-                    <td>1664</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Bob</td>
-                    <td>1331</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dany</td>
-                    <td>8000</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Clara</td>
-                    <td>8000</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Egor</td>
-                    <td>1000</td>
-                </tr>
-            </table>
-            <div class="action-container">
-                <a class="action-sort">Sort data</a>
-                <a class="action-get-first">Get first 'n' names</a>
-                <a class="action-get-last">Get last 'n' ids</a>
-                <input class="action-input" type="number"/>
+            </div>
+            <div id="table-holder">
+                <div class="table-box">
+                    <table class="table">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Average  monthly salary</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Anna</td>
+                            <td>1664</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Bob</td>
+                            <td>1331</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Dany</td>
+                            <td>8000</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Clara</td>
+                            <td>8000</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Egor</td>
+                            <td>1000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="controlls">
+                <span class="btn btn-sort">Sort data</span>
+                <span class="btn btn-get-names">Get first 'n' names</span>
+                <span class="btn btn-get-ids">Get last 'n' ids</span>
+            
+                <form class="form-controll">
+                    <span class="btn btn-up">+</span>
+                    <input id="count-input" type="text" value="0"></input>
+                    <span class="btn btn-down">-</span>
+                </form>
+            </div>
+            <span class="annotate rt">* Please, enter quantity ("n" &#8593;) for data you want get.</span>
+            <div class="list-holder">
+                <ul class="list">
+                <li><span>1.</span> Mcfarland</li>
+                <li><span>2.</span> Jeannette</li>
+                <li><span>3.</span> Jeanine</li>
+                <li><span>4.</span> Daniel</li>
+                <li><span>5.</span> Suarez</li>
+                </ul>
+            </div>
+            <div class="error-box">
+                <p>Invalid input. Please, insert valid data in the field.</p>
+                <span class="btn-close"><i class="fa fa-times"></i></span>
             </div>
         </div>
-        <footer class="footer">* Please, enter quantity ("n" &#8593;) for data you want get.</footer>
     </body>
 </html>
