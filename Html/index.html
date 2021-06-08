@@ -2,7 +2,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="../Css/index.css">
-    </head>
+        <script src="../JS/Employee.js"></script>
+        <script src="../JS/FixedEmployee.js"></script>
+        <script src="../JS/PerHourEmployee.js"></script>
+        <script src="../JS/EmployeeCollection.js"></script>
     <body>
         <div class="box">
             <header class="header">
@@ -93,4 +96,19 @@
             </div>
         </div>
     </body>
+    <script>
+        let coll = new EmployeeCollection();
+        let test = new FixedEmployee("test", 100, "Jhon");
+        let test2 = new PerHourEmployee("test2", 100, "Carmen");
+        let test3 = new PerHourEmployee("test3", 100, "Ahmed");
+        let test4 = new PerHourEmployee("test4", 100, "Albedo");
+        let test5 = new PerHourEmployee("test5", 100, "Sona");
+        coll.addRange([test, test2, test3, test4, test5])
+        let test6 = new FixedEmployee("test6", 102, "Alice");
+        coll.add(test6);
+        console.log("sorted collection:");
+        console.log(coll.sort());
+        console.log("top five names:" + coll.getTopFiveNames());
+        console.log("last three ids:" + coll.getLastThreeIds());
+    </script>
 </html>
