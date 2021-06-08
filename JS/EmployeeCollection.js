@@ -1,18 +1,5 @@
 function EmployeeCollection() {
     this.collection = [];
-
-    let iterator = 0;
-
-    const rangeIterator = {
-       next: function() {
-           let result;
-           if (iterator < this.collection.length) {
-               result = { value: this.collection[iterator], done: false }
-               iterator++;
-               return result;
-           }
-       }
-    };
 }
 
 EmployeeCollection.prototype.add = function(employee)
@@ -51,21 +38,21 @@ EmployeeCollection.prototype.getByEmployeesInfo=function()
     return result;
 }
 
-EmployeeCollection.prototype.getTopFiveNames=function()
+EmployeeCollection.prototype.getTopNames=function(count)
 {
     let result = [];
-    for(let i = 0; i < 5 && i < this.collection.length; i++){
+    for(let i = 0; i < ((count > 0 ) ? count : 5) && i < this.collection.length; i++){
         result.push(this.collection[i].name);
     }
 
     return result;
 }
 
-EmployeeCollection.prototype.getLastThreeIds=function()
+EmployeeCollection.prototype.getLastIds=function(count)
 {
     let result = [];
     let arr = this.collection.reverse();
-    for(let i = 0; i < 3 && i < this.collection.length; i++){
+    for(let i = 0; i < ((count > 0 ) ? count : 3) && i < this.collection.length; i++){
         result.push(this.collection[i].id);
     }
 
